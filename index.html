@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,13 +86,20 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle at 20% 50%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
             animation: pulse 8s ease-in-out infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         .hero-content {
@@ -164,6 +172,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -435,16 +444,16 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
+
             .nav-links {
                 display: none;
             }
-            
+
             .about-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
-            
+
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -461,6 +470,158 @@
         }
 
         /* Animation utilities */
+        .project-detail-card {
+            background: #0f172a;
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid #1e293b;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            height: 100%;
+        }
+
+        .project-detail-card:hover {
+            border-color: #38bdf8;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin: 0;
+            color: #f8fafc;
+        }
+
+        .project-links {
+            margin-top: 1rem;
+        }
+
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: #1e293b;
+            color: #e2e8f0;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-links a:hover {
+            background: #38bdf8;
+            color: #020617;
+            border-color: #38bdf8;
+            transform: translateY(-2px);
+        }
+
+        .project-description {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .tech-tag {
+            background: #1e293b;
+            color: #38bdf8;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #334155;
+        }
+
+        .features-container {
+            border-top: 1px solid #1e293b;
+            padding-top: 1.5rem;
+            display: none;
+            /* Hidden by default */
+        }
+
+        .features-container.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .key-features-title {
+            color: #e2e8f0;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: #38bdf8;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .toggle-features-btn {
+            background: transparent;
+            border: none;
+            color: #38bdf8;
+            cursor: pointer;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0;
+            margin-top: auto;
+            width: fit-content;
+        }
+
+        .toggle-features-btn:hover {
+            text-decoration: underline;
+        }
+
+        .toggle-features-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-features-btn.active i {
+            transform: rotate(180deg);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(30px);
@@ -473,6 +634,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav class="container">
@@ -496,8 +658,8 @@
                     <p class="subtitle">Transforming Ideas into Intelligent Solutions</p>
                     <p class="description">
                         AI Engineer specializing in agentic systems, multi-agent architectures,
-                          and deep learning.
-                       Building intelligent solutions that autonomously reason, plan, and execute complex tasks
+                        and deep learning.
+                        Building intelligent solutions that autonomously reason, plan, and execute complex tasks
                     </p>
                     <div class="cta-buttons">
                         <a href="#contact" class="btn primary">Let's get in touch</a>
@@ -515,14 +677,19 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        I'm an AI Engineer specializing in agentic systems and multi-agent architectures. My work focuses on building intelligent agents that can reason, plan, and interact with external tools and APIs.
+                        I'm an AI Engineer specializing in agentic systems and multi-agent architectures. My work
+                        focuses on building intelligent agents that can reason, plan, and interact with external tools
+                        and APIs.
                     </p>
                     <p>
-I have hands-on experience with LangChain, LangGraph, and RAG pipelines, creating solutions that automate complex workflows. I'm comfortable with deep learning frameworks, deploying applications with Docker, and working across the full AI development cycle.
+                        I have hands-on experience with LangChain, LangGraph, and RAG pipelines, creating solutions that
+                        automate complex workflows. I'm comfortable with deep learning frameworks, deploying
+                        applications with Docker, and working across the full AI development cycle.
                     </p>
                     <p>
-                        
-I'm passionate about solving real problems with AI and continuously learning new technologies in this fast-evolving field.
+
+                        I'm passionate about solving real problems with AI and continuously learning new technologies in
+                        this fast-evolving field.
                     </p>
                 </div>
                 <div class="stats">
@@ -590,26 +757,166 @@ I'm passionate about solving real problems with AI and continuously learning new
         <section id="projects" class="container animate-on-scroll">
             <h2 class="section-title">Featured GitHub Projects</h2>
             <div class="projects">
-                <a class="project-card" href="https://github.com/moedk2204/Deep_Learning_AnomalyDetection" target="_blank">
-                    <i class="fab fa-github"></i>
-                    <h3>Deep Learning Anomaly Detection</h3>
-                    <p>Fraud & anomaly detection using neural networks.</p>
-                </a>
-                <a class="project-card" href="https://github.com/moedk2204/RAG_PDF_CHAT" target="_blank">
-                    <i class="fab fa-github"></i>
-                    <h3>RAG PDF Chat</h3>
-                    <p>Chat with PDFs using RAG pipelines.</p>
-                </a>
-                <a class="project-card" href="https://github.com/moedk2204/ML_creditcard_" target="_blank">
-                    <i class="fab fa-github"></i>
-                    <h3>Credit Card Fraud Detection</h3>
-                    <p>Machine learning for transaction fraud.</p>
-                </a>
-                <a class="project-card" href="https://github.com/moedk2204/ML_Titanic" target="_blank">
-                    <i class="fab fa-github"></i>
-                    <h3>Titanic ML Project</h3>
-                    <p>Classic ML classification pipeline.</p>
-                </a>
+                <!-- Project 1: Deep Learning Anomaly Detection -->
+                <div class="project-detail-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Deep Learning Anomaly Detection</h3>
+
+                    </div>
+                    <div class="project-description">
+                        A deep learning–based anomaly detection project focused on identifying unusual patterns in
+                        complex datasets using neural networks. Designed to detect rare events and outliers through
+                        representation learning and reconstruction error analysis.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow / Keras</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Matplotlib</span>
+                    </div>
+                    <button class="toggle-features-btn" onclick="toggleFeatures(this)">
+                        <span>Show Key Features</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="features-container">
+                        <h4 class="key-features-title">Key Features</h4>
+                        <ul class="features-list">
+                            <li>Deep learning models for anomaly detection using reconstruction-based techniques</li>
+                            <li>Feature engineering and data preprocessing for high-dimensional data</li>
+                            <li>Threshold-based anomaly scoring and detection</li>
+                            <li>Model evaluation using reconstruction error analysis</li>
+                            <li>Visualization of anomalies and performance metrics</li>
+                            <li>End-to-end ML workflow from data preparation to evaluation</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/moedk2204/Deep_Learning_AnomalyDetection" target="_blank">
+                            code <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: RAG PDF Chat -->
+                <div class="project-detail-card">
+                    <div class="project-header">
+                        <h3 class="project-title">RAG PDF Chat</h3>
+
+                    </div>
+                    <div class="project-description">
+                        A Retrieval-Augmented Generation (RAG) system that enables intelligent question-answering over
+                        PDF documents by combining vector search with large language models for accurate, context-aware
+                        responses.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">LangGraph</span>
+                        <span class="tech-tag">FAISS / Vector Database</span>
+                        <span class="tech-tag">Hugging Face Transformers</span>
+                        <span class="tech-tag">FastAPI / Flask</span>
+                    </div>
+                    <button class="toggle-features-btn" onclick="toggleFeatures(this)">
+                        <span>Show Key Features</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="features-container">
+                        <h4 class="key-features-title">Key Features</h4>
+                        <ul class="features-list">
+                            <li>PDF ingestion, parsing, and intelligent text chunking</li>
+                            <li>Embedding generation and semantic similarity search</li>
+                            <li>Context-aware question answering using RAG pipelines</li>
+                            <li>Efficient vector-based document retrieval</li>
+                            <li>Modular pipeline design for scalable document querying</li>
+                            <li>Reliable grounding of LLM responses in source documents</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/moedk2204/RAG_PDF_CHAT" target="_blank">
+                            code <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Credit Card Fraud Detection -->
+                <div class="project-detail-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Credit Card Fraud Detection</h3>
+                    </div>
+                    <div class="project-description">
+                        A machine learning project focused on detecting fraudulent credit card transactions using
+                        anomaly detection and classification techniques to handle highly imbalanced financial datasets.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Matplotlib</span>
+                        <span class="tech-tag">Seaborn</span>
+                    </div>
+                    <button class="toggle-features-btn" onclick="toggleFeatures(this)">
+                        <span>Show Key Features</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="features-container">
+                        <h4 class="key-features-title">Key Features</h4>
+                        <ul class="features-list">
+                            <li>Fraud detection on highly imbalanced transaction data</li>
+                            <li>Feature scaling and preprocessing for financial datasets</li>
+                            <li>Anomaly detection and supervised ML models</li>
+                            <li>Evaluation using precision, recall, F1-score, and ROC-AUC</li>
+                            <li>Visualization of fraud patterns and model performance</li>
+                            <li>Real-world fraud detection workflow and risk analysis</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/moedk2204/ML_creditcard_" target="_blank">
+                            code <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4: Titanic ML Project -->
+                <div class="project-detail-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Titanic ML Project</h3>
+
+                    </div>
+                    <div class="project-description">
+                        A classic supervised machine learning project predicting passenger survival on the Titanic using
+                        structured data analysis and multiple classification models.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Matplotlib</span>
+                        <span class="tech-tag">Seaborn</span>
+                    </div>
+                    <button class="toggle-features-btn" onclick="toggleFeatures(this)">
+                        <span>Show Key Features</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="features-container">
+                        <h4 class="key-features-title">Key Features</h4>
+                        <ul class="features-list">
+                            <li>Data cleaning, feature engineering, and exploratory data analysis</li>
+                            <li>Implementation of multiple ML classification models</li>
+                            <li>Model comparison and performance evaluation</li>
+                            <li>Handling missing values and categorical data</li>
+                            <li>Hyperparameter tuning for improved accuracy</li>
+                            <li>End-to-end ML pipeline from raw data to prediction</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/moedk2204/ML_Titanic" target="_blank">
+                            <span>code</span> <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -677,11 +984,9 @@ I'm passionate about solving real problems with AI and continuously learning new
                         Real production website designed, containerized, and deployed using Docker.
                     </p>
                     <div style="margin-top:15px;">
-                        <a href="https://github.com/moedk2204/carre-d-or" target="_blank" style="display:inline-flex; align-items:center; gap:8px;">
-                            <i class="fab fa-github"></i> GitHub Repository
-                        </a>
-                        <br/><br/>
-                        <a href="https://carredor.org" target="_blank" style="display:inline-flex; align-items:center; gap:8px;">
+                        
+                        <a href="https://carredor.org" target="_blank"
+                            style="display:inline-flex; align-items:center; gap:8px;">
                             <i class="fas fa-external-link-alt"></i> Live Website
                         </a>
                     </div>
@@ -703,7 +1008,9 @@ I'm passionate about solving real problems with AI and continuously learning new
                     <a class="contact-btn" href="https://www.linkedin.com/in/mohamad-dbouk/" target="_blank">
                         <i class="fab fa-linkedin"></i> LinkedIn
                     </a>
-                    
+                    <a class="contact-btn" href="Mohamad_Dbouk_CV_.pdf" target="_blank" download>
+                        <i class="fas fa-file-pdf"></i> Download CV
+                    </a>
                 </div>
             </div>
         </section>
@@ -733,7 +1040,7 @@ I'm passionate about solving real problems with AI and continuously learning new
             });
         });
 
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
                 header.style.background = 'rgba(2, 6, 23, 0.98)';
@@ -747,7 +1054,7 @@ I'm passionate about solving real problems with AI and continuously learning new
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animated');
@@ -761,12 +1068,12 @@ I'm passionate about solving real problems with AI and continuously learning new
 
         function animateCounters() {
             const counters = document.querySelectorAll('.stat-number');
-            
+
             counters.forEach(counter => {
                 const target = parseInt(counter.textContent.replace('+', '').replace('%', ''));
                 let count = 0;
                 const increment = target / 100;
-                
+
                 const updateCounter = () => {
                     if (count < target) {
                         count += increment;
@@ -776,13 +1083,30 @@ I'm passionate about solving real problems with AI and continuously learning new
                         counter.textContent = target + (counter.textContent.includes('+') ? '+' : counter.textContent.includes('%') ? '%' : '');
                     }
                 };
-                
+
                 updateCounter();
             });
         }
 
+        function toggleFeatures(btn) {
+            const container = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            const text = btn.querySelector('span');
+
+            container.classList.toggle('active');
+            btn.classList.toggle('active');
+
+            if (container.classList.contains('active')) {
+                text.textContent = 'Hide Key Features';
+                icon.className = 'fas fa-chevron-up';
+            } else {
+                text.textContent = 'Show Key Features';
+                icon.className = 'fas fa-chevron-down';
+            }
+        }
+
         const aboutSection = document.querySelector('#about');
-        const aboutObserver = new IntersectionObserver(function(entries) {
+        const aboutObserver = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     animateCounters();
@@ -794,4 +1118,5 @@ I'm passionate about solving real problems with AI and continuously learning new
         aboutObserver.observe(aboutSection);
     </script>
 </body>
+
 </html>
