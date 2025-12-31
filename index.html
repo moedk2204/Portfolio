@@ -91,8 +91,15 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         .hero-content {
@@ -165,6 +172,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -580,6 +588,7 @@
                 opacity: 0;
                 transform: translateY(-10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -638,6 +647,7 @@
                 transform: scale(1);
                 opacity: 1;
             }
+
             100% {
                 transform: scale(1.5);
                 opacity: 0;
@@ -669,6 +679,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -739,6 +750,7 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -868,10 +880,14 @@
         }
 
         @keyframes typing {
-            0%, 60%, 100% {
+
+            0%,
+            60%,
+            100% {
                 transform: translateY(0);
                 opacity: 0.5;
             }
+
             30% {
                 transform: translateY(-10px);
                 opacity: 1;
@@ -1043,7 +1059,7 @@
                         <li>MLflow</li>
                         <li>Cloud Platforms (AWS)</li>
                     </ul>
-                  </div>
+                </div>
             </div>
         </section>
 
@@ -1242,7 +1258,8 @@
                         <a href="https://github.com/moedk2204/Calendar_Assistant" target="_blank">
                             code <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7410682553478701056/" target="_blank">
+                        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7410682553478701056/"
+                            target="_blank">
                             demo <i class="fas fa-external-link-alt"></i>
                         </a>
                     </div>
@@ -1263,7 +1280,8 @@
                         <a href="https://github.com/moedk2204/HR_Assistant" target="_blank">
                             code <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7409699889015705602/" target="_blank">
+                        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7409699889015705602/"
+                            target="_blank">
                             demo <i class="fas fa-external-link-alt"></i>
                         </a>
                     </div>
@@ -1333,47 +1351,47 @@
                 </div>
             </div>
         </section>
-         <div class="chat-widget">
-    <div class="chat-pulse"></div>
-    <button class="chat-button" id="chat-toggle">
-        <i class="fas fa-comment"></i>
-    </button>
+        <div class="chat-widget">
+            <div class="chat-pulse"></div>
+            <button class="chat-button" id="chat-toggle">
+                <i class="fas fa-comment"></i>
+            </button>
 
-    <div class="chat-window" id="chat-window">
-        <div class="chat-header">
-            <div class="chat-header-avatar">
-                <i class="fas fa-robot"></i>
-            </div>
-            <div class="chat-header-text">
-                <h3>AI Assistant</h3>
-                <p>Online | Powered by Mohamad</p>
-            </div>
-        </div>
+            <div class="chat-window" id="chat-window">
+                <div class="chat-header">
+                    <div class="chat-header-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="chat-header-text">
+                        <h3>AI Assistant</h3>
+                        <p>Online | Powered by Mohamad</p>
+                    </div>
+                </div>
 
-        <div class="chat-messages" id="chat-messages">
-            <div class="chat-message bot">
-                <div class="message-avatar"><i class="fas fa-robot"></i></div>
-                <div class="message-content">
-                    Hello! I'm Mohamad's AI agent. How can I help you today?
+                <div class="chat-messages" id="chat-messages">
+                    <div class="chat-message bot">
+                        <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                        <div class="message-content">
+                            Hello! I'm Mohamad's AI agent. How can I help you today?
+                        </div>
+                    </div>
+                    <div class="typing-indicator" id="typing-indicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <form class="chat-input-form" id="chat-form">
+                        <input type="text" class="chat-input" placeholder="Type your message..." id="user-input">
+                        <button type="submit" class="chat-send-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
-            <div class="typing-indicator" id="typing-indicator">
-                <div class="typing-dot"></div>
-                <div class="typing-dot"></div>
-                <div class="typing-dot"></div>
-            </div>
         </div>
-
-        <div class="chat-input-area">
-            <form class="chat-input-form" id="chat-form">
-                <input type="text" class="chat-input" placeholder="Type your message..." id="user-input">
-                <button type="submit" class="chat-send-btn">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </form>
-        </div>
-    </div>
-</div>
     </main>
 
     <footer>
@@ -1387,66 +1405,119 @@
     </footer>
 
     <script>
-         // --- Chatbot Specific Logic ---
-const chatToggle = document.getElementById('chat-toggle');
-const chatWindow = document.getElementById('chat-window');
-const chatForm = document.getElementById('chat-form');
-const chatMessages = document.getElementById('chat-messages');
-const userInput = document.getElementById('user-input');
-const typingIndicator = document.getElementById('typing-indicator');
+        // --- Chatbot Specific Logic ---
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatWindow = document.getElementById('chat-window');
+        const chatForm = document.getElementById('chat-form');
+        const chatMessages = document.getElementById('chat-messages');
+        const userInput = document.getElementById('user-input');
+        const typingIndicator = document.getElementById('typing-indicator');
 
-// Open/Close Chat
-chatToggle.addEventListener('click', () => {
-    chatWindow.classList.toggle('active');
-    chatToggle.classList.toggle('active');
-    
-    // Change icon between 'comment' and 'X'
-    const icon = chatToggle.querySelector('i');
-    if (chatWindow.classList.contains('active')) {
-        icon.className = 'fas fa-times';
-    } else {
-        icon.className = 'fas fa-comment';
-    }
-});
+        // Store chat history for context
+        let chatHistory = [];
 
-// Handle Message Sending
-chatForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const message = userInput.value.trim();
-    
-    if (message) {
-        addMessage(message, 'user');
-        userInput.value = '';
-        
-        // Simulate Bot Response (Replace this with your API call)
-        showTyping(true);
-        setTimeout(() => {
-            showTyping(false);
-            addMessage("I'm a demo agent. Still in production.", 'bot');
-        }, 1500);
-    }
-});
+        // Open/Close Chat
+        chatToggle.addEventListener('click', () => {
+            chatWindow.classList.toggle('active');
+            chatToggle.classList.toggle('active');
 
-function addMessage(text, sender) {
-    const msgDiv = document.createElement('div');
-    msgDiv.className = `chat-message ${sender}`;
-    
-    const avatar = sender === 'bot' ? '<i class="fas fa-robot"></i>' : '<i class="fas fa-user"></i>';
-    
-    msgDiv.innerHTML = `
-        <div class="message-avatar">${avatar}</div>
-        <div class="message-content">${text}</div>
-    `;
-    
-    // Insert before the typing indicator
-    chatMessages.insertBefore(msgDiv, typingIndicator);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
+            // Change icon between 'comment' and 'X'
+            const icon = chatToggle.querySelector('i');
+            if (chatWindow.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-comment';
+            }
+        });
 
-function showTyping(show) {
-    typingIndicator.style.display = show ? 'flex' : 'none';
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
+        // Handle Message Sending
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const message = userInput.value.trim();
+
+            if (message) {
+                addMessage(message, 'user');
+                userInput.value = '';
+                showTyping(true);
+
+                // Add to history
+                chatHistory.push({ role: "user", content: message });
+
+                try {
+                    // CHANGE TO Render URL HERE (e.g., https://your-backend.onrender.com/api/chat)
+                    const response = await fetch('https://portfolio-backend-0mul.onrender.com/api/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: message,
+                            history: chatHistory.slice(-10) // Send last 10 messages for context
+                        })
+                    });
+
+                    showTyping(false);
+
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
+                    // Create bot message container
+                    const msgDiv = document.createElement('div');
+                    msgDiv.className = 'chat-message bot';
+                    msgDiv.innerHTML = `
+                        <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                        <div class="message-content"></div>
+                    `;
+                    chatMessages.insertBefore(msgDiv, typingIndicator);
+                    const contentDiv = msgDiv.querySelector('.message-content');
+
+                    // Handle Streaming Response
+                    const reader = response.body.getReader();
+                    const decoder = new TextDecoder();
+                    let fullBotResponse = "";
+
+                    while (true) {
+                        const { done, value } = await reader.read();
+                        if (done) break;
+
+                        const chunk = decoder.decode(value);
+                        fullBotResponse += chunk;
+                        contentDiv.textContent += chunk;
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }
+
+                    // Add bot response to history
+                    chatHistory.push({ role: "assistant", content: fullBotResponse });
+
+                } catch (error) {
+                    showTyping(false);
+                    console.error('Error:', error);
+                    addMessage("Sorry, I'm having trouble connecting to the server.", 'bot');
+                }
+            }
+        });
+
+        function addMessage(text, sender) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `chat-message ${sender}`;
+
+            const avatar = sender === 'bot' ? '<i class="fas fa-robot"></i>' : '<i class="fas fa-user"></i>';
+
+            msgDiv.innerHTML = `
+                <div class="message-avatar">${avatar}</div>
+                <div class="message-content">${text}</div>
+            `;
+
+            // Insert before the typing indicator
+            chatMessages.insertBefore(msgDiv, typingIndicator);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showTyping(show) {
+            typingIndicator.style.display = show ? 'flex' : 'none';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1538,4 +1609,5 @@ function showTyping(show) {
         aboutObserver.observe(aboutSection);
     </script>
 </body>
+
 </html>
