@@ -210,6 +210,15 @@
             border: 1px solid #1e293b;
         }
 
+        .about-text p+p {
+            margin-top: 1rem;
+        }
+
+        .about-text strong {
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
         .stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -363,6 +372,7 @@
             padding: 50px 30px;
             text-align: center;
             margin-top: 40px;
+            margin-bottom: 60px;
         }
 
         .contact-box h2 {
@@ -593,6 +603,149 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        /* ===== SECTION SUBTITLE ===== */
+        .section-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            max-width: 750px;
+            margin: -2rem auto 3rem;
+            font-size: 1.05rem;
+        }
+
+        .section-subtitle .highlight {
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        /* ===== SLIDER ===== */
+        .slider {
+            position: relative;
+        }
+
+        .slider-track {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding: 0.5rem 0.25rem 1.5rem;
+            scrollbar-width: none;
+        }
+
+        .slider-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+            display: flex;
+        }
+
+        .slide .project-detail-card {
+            width: 100%;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: #e2e8f0;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 5;
+        }
+
+        .slider-btn:hover:not(:disabled) {
+            background: #38bdf8;
+            color: #020617;
+            border-color: #38bdf8;
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.35);
+        }
+
+        .slider-btn:disabled {
+            opacity: 0.25;
+            cursor: not-allowed;
+        }
+
+        .slider-btn.prev {
+            left: -22px;
+        }
+
+        .slider-btn.next {
+            right: -22px;
+        }
+
+        /* Keep the arrows on-screen when the viewport is narrower than the container + gutters */
+        @media (max-width: 1300px) {
+            .slider-btn.prev {
+                left: -6px;
+            }
+
+            .slider-btn.next {
+                right: -6px;
+            }
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+        }
+
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #1e293b;
+            border: 1px solid #334155;
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: #38bdf8;
+            border-color: #38bdf8;
+            width: 28px;
+            border-radius: 5px;
+        }
+
+        .project-meta {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-top: 0.35rem;
+        }
+
+        .project-meta .dot {
+            color: #38bdf8;
+            margin: 0 0.5rem;
+        }
+
+        .badge-deployed {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #38bdf8;
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
         }
 
         /* ===== CHATBOT WIDGET ===== */
@@ -927,6 +1080,26 @@
                 right: 20px;
                 bottom: 20px;
             }
+
+            .slider-btn.prev {
+                left: 0;
+            }
+
+            .slider-btn.next {
+                right: 0;
+            }
+
+            .slider-btn {
+                top: auto;
+                bottom: -8px;
+                transform: none;
+                width: 40px;
+                height: 40px;
+            }
+
+            .slider-dots {
+                margin-top: 1rem;
+            }
         }
 
         html {
@@ -954,6 +1127,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#tech">Tech Stack</a></li>
+                <li><a href="#leadbytech">Case Studies</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -967,9 +1141,9 @@
                     <h1>Mohamad Dbouk | AI Engineer</h1>
                     <p class="subtitle">Transforming Ideas into Intelligent Solutions</p>
                     <p class="description">
-                        AI Engineer specializing in agentic systems, multi-agent architectures,
-                        and deep learning.
-                        Building intelligent solutions that autonomously reason, plan, and execute complex tasks
+                        AI Engineer specializing in agentic systems, multi-agent architectures, and multi-modal
+                        orchestration. I build autonomous agents that reason, plan, and execute real business
+                        workflows — shipped to production on AWS.
                     </p>
                     <div class="cta-buttons">
                         <a href="#contact" class="btn primary">Let's get in touch</a>
@@ -987,36 +1161,40 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        I'm an AI Engineer specializing in agentic systems and multi-agent architectures. My work
-                        focuses on building intelligent agents that can reason, plan, and interact with external tools
-                        and APIs.
+                        I'm an AI Engineer who builds <strong>autonomous agents that run in production</strong>, not
+                        demos. At Lead By Tech I architected the CEO Agent embedded inside the Lyntrix ERP — a system
+                        that lets non-technical users interrogate a live database in natural language, surface profit
+                        leaks, and draft real business records through a human-in-the-loop approval protocol.
                     </p>
                     <p>
-                        I have hands-on experience with LangChain, LangGraph, and RAG pipelines, creating solutions that
-                        automate complex workflows. I'm comfortable with deep learning frameworks, deploying
-                        applications with Docker, and working across the full AI development cycle.
+                        My focus is <strong>agentic orchestration</strong>: multi-step reasoning with LangGraph,
+                        deterministic tool calling, and stateful workflows that stay reliable under real user behavior.
+                        I've engineered a low-latency voice pipeline on top of Gemini Live that answers company
+                        questions conversationally in the user's own dialect, and a Playwright-driven QA agent that
+                        autonomously navigates, tests, and debugs web applications like a virtual engineer.
                     </p>
                     <p>
-                        I'm passionate about solving real problems with AI and continuously learning new technologies in
-                        this fast-evolving field.
+                        I work end to end — multi-modal ingestion (text, voice, image), RAG over vector databases,
+                        PostgreSQL, and Docker — and I ship everything to <strong>AWS</strong>, my primary cloud for
+                        deploying and running every production-ready system I build.
                     </p>
                 </div>
                 <div class="stats">
                     <div class="stat-item">
-                        <div class="stat-number">1+</div>
+                        <div class="stat-number">2+</div>
                         <div>Years Experience</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">5+</div>
+                        <div class="stat-number">10+</div>
                         <div>AI Projects</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">15+</div>
-                        <div>Technologies</div>
+                        <div class="stat-number">5+</div>
+                        <div>Production Agents on AWS</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div>Passion</div>
+                        <div class="stat-number">25+</div>
+                        <div>Technologies</div>
                     </div>
                 </div>
             </div>
@@ -1043,23 +1221,184 @@
                     <ul class="tech-list">
                         <li>LangChain (Expert)</li>
                         <li>LangGraph</li>
-                        <li>AutoGen</li>
-                        <li>Agent Frameworks</li>
+                        <li>Agentic State Management</li>
+                        <li>LLM Tool Calling</li>
                         <li>Multi-Agent Systems</li>
+                        <li>Human-in-the-Loop Protocols</li>
                         <li>RAG Implementation</li>
+                        <li>Playwright Agent Automation</li>
                     </ul>
                 </div>
                 <div class="tech-category">
-                    <h3><i class="fas fa-code"></i> Development Tools</h3>
+                    <h3><i class="fas fa-layer-group"></i> Multi-Modal &amp; Data</h3>
                     <ul class="tech-list">
-                        <li>Git & GitHub</li>
-                        <li>Docker</li>
-                        <li>FastAPI / Flask</li>
-                        <li>Jupyter Notebooks</li>
-                        <li>MLflow</li>
-                        <li>Cloud Platforms (AWS)</li>
+                        <li>Gemini Live API (Realtime Voice)</li>
+                        <li>Vision / OCR Document Parsing</li>
+                        <li>WebSocket Streaming</li>
+                        <li>PostgreSQL</li>
+                        <li>Vector Databases (Pinecone / FAISS)</li>
+                        <li>Supabase</li>
                     </ul>
                 </div>
+                <div class="tech-category">
+                    <h3><i class="fab fa-aws"></i> Cloud &amp; Deployment</h3>
+                    <ul class="tech-list">
+                        <li><strong style="color:#38bdf8;">AWS — primary cloud</strong></li>
+                        <li>Docker &amp; Containerization</li>
+                        <li>FastAPI / Flask</li>
+                        <li>CI/CD &amp; Production Monitoring</li>
+                        <li>Git &amp; GitHub</li>
+                        <li>MLflow</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="leadbytech" class="container animate-on-scroll">
+            <h2 class="section-title">Production Case Studies</h2>
+            <p class="section-subtitle">
+                Agentic systems built, shipped, and running in production — all deployed on
+                <span class="highlight">AWS</span>.
+            </p>
+
+            <div class="slider">
+                <button class="slider-btn prev" id="lbt-prev" aria-label="Previous case study">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn next" id="lbt-next" aria-label="Next case study">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <div class="slider-track" id="lbt-track">
+                    <!-- Case Study 1: Lyntrix ERP CEO Agent -->
+                    <div class="slide">
+                        <div class="project-detail-card">
+                            <div class="project-header">
+                                <div>
+                                    <h3 class="project-title">Lyntrix ERP CEO Agent &amp; Voice Orchestrator</h3>
+                                    <div class="project-meta">Lead By Tech <span class="dot">•</span> 2026</div>
+                                </div>
+                                <span class="badge-deployed"><i class="fab fa-aws"></i> Deployed on AWS</span>
+                            </div>
+                            <div class="project-description">
+                                Built a multimodal agentic system bridging a live ERP database with Large Language
+                                Models to act as a 24/7 autonomous data analyst and operational assistant.
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">LangGraph</span>
+                                <span class="tech-tag">Gemini Live API</span>
+                                <span class="tech-tag">Multi-Modal Vision APIs</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">WebSocket Streaming</span>
+                                <span class="tech-tag">Agentic State Management</span>
+                                <span class="tech-tag">AWS</span>
+                            </div>
+                            <button class="toggle-features-btn" onclick="toggleFeatures(this)">
+                                <span>Show Key Features</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="features-container">
+                                <h4 class="key-features-title">Key Features</h4>
+                                <ul class="features-list">
+                                    <li>Integrated Gemini Live for real-time, conversational voice interactions,
+                                        enabling dynamic multi-step reasoning for cross-database financial diagnostics
+                                        and profit-leakage tracking</li>
+                                    <li>Engineered an autonomous CRUD pipeline allowing the agent to parse invoices,
+                                        images, and voice commands to draft new sales and purchase records</li>
+                                    <li>Human-in-the-loop approval protocol routing every drafted record to
+                                        administrators for final confirmation before commit</li>
+                                    <li>Natural-language querying of complex ERP schemas without SQL knowledge</li>
+                                    <li>Low-latency voice orchestration answering in the user's preferred dialect</li>
+                                    <li>Production deployment and scaling on AWS infrastructure</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case Study 2: Autonomous QA Testing & Seeding Agent -->
+                    <div class="slide">
+                        <div class="project-detail-card">
+                            <div class="project-header">
+                                <div>
+                                    <h3 class="project-title">Autonomous QA Testing &amp; Seeding Agent</h3>
+                                    <div class="project-meta">Lead By Tech <span class="dot">•</span> 2026</div>
+                                </div>
+                                <span class="badge-deployed"><i class="fab fa-aws"></i> Deployed on AWS</span>
+                            </div>
+                            <div class="project-description">
+                                Architected an event-driven AI testing agent to act as a virtual QA engineer, automating
+                                comprehensive end-to-end regression testing across complex web applications.
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Playwright</span>
+                                <span class="tech-tag">Automated Browser Testing</span>
+                                <span class="tech-tag">Deterministic Execution</span>
+                                <span class="tech-tag">LLM Tool Calling</span>
+                                <span class="tech-tag">AWS</span>
+                            </div>
+                            <button class="toggle-features-btn" onclick="toggleFeatures(this)">
+                                <span>Show Key Features</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="features-container">
+                                <h4 class="key-features-title">Key Features</h4>
+                                <ul class="features-list">
+                                    <li>Utilized Playwright to let the agent dynamically interact with the DOM, test
+                                        isolated modules, and simulate unpredictable user behaviors</li>
+                                    <li>Deterministic debugging reports logged per run for reproducible triage</li>
+                                    <li>Designed a database-seeding loop automating bulk data ingestion (suppliers,
+                                        customers, invoices) from natural language inputs</li>
+                                    <li>Event-driven architecture covering every module of the target application</li>
+                                    <li>End-to-end regression coverage without hand-written test scripts</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case Study 3: Domain-Specific Customer Support Assistant -->
+                    <div class="slide">
+                        <div class="project-detail-card">
+                            <div class="project-header">
+                                <div>
+                                    <h3 class="project-title">Domain-Specific Customer Support Assistant</h3>
+                                    <div class="project-meta">Lead By Tech <span class="dot">•</span> 2025 – 2026</div>
+                                </div>
+                                <span class="badge-deployed"><i class="fab fa-aws"></i> Deployed on AWS</span>
+                            </div>
+                            <div class="project-description">
+                                Developed and deployed an embedded AI chatbot for the primary company website, grounded
+                                strictly in verified company data to handle high-volume customer inquiries.
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">LangChain</span>
+                                <span class="tech-tag">RAG</span>
+                                <span class="tech-tag">Vector Databases</span>
+                                <span class="tech-tag">Web Integration</span>
+                                <span class="tech-tag">AWS</span>
+                            </div>
+                            <button class="toggle-features-btn" onclick="toggleFeatures(this)">
+                                <span>Show Key Features</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="features-container">
+                                <h4 class="key-features-title">Key Features</h4>
+                                <ul class="features-list">
+                                    <li>Retrieval-Augmented Generation grounded strictly in verified company data to
+                                        eliminate hallucinated answers</li>
+                                    <li>Embedded directly into the live company website for 24/7 inquiry handling</li>
+                                    <li>Automated inquiry routing and workflow automation for the support team</li>
+                                    <li>Vector-database knowledge base kept in sync with official documentation</li>
+                                    <li>Hosted and served from AWS for production reliability</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slider-dots" id="lbt-dots"></div>
             </div>
         </section>
 
@@ -1107,11 +1446,159 @@
                     </div>
                 </div>
 
-                <!-- Project 2: RAG Chatbot (Claude API + LangChain + Gradio) -->
+                <!-- Project 2: Credit Card Fraud Detection -->
                 <div class="project-detail-card">
                     <div class="project-header">
-                        <h3 class="project-title">RAG Chatbot (Claude API + LangChain + Gradio)</h3>
+                        <h3 class="project-title">Credit Card Fraud Detection</h3>
+                    </div>
+                    <div class="project-description">
+                        A machine learning project focused on detecting fraudulent credit card transactions using
+                        anomaly detection and classification techniques to handle highly imbalanced financial datasets.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Matplotlib</span>
+                        <span class="tech-tag">Seaborn</span>
+                    </div>
+                    <button class="toggle-features-btn" onclick="toggleFeatures(this)">
+                        <span>Show Key Features</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="features-container">
+                        <h4 class="key-features-title">Key Features</h4>
+                        <ul class="features-list">
+                            <li>Fraud detection on highly imbalanced transaction data</li>
+                            <li>Feature scaling and preprocessing for financial datasets</li>
+                            <li>Anomaly detection and supervised ML models</li>
+                            <li>Evaluation using precision, recall, F1-score, and ROC-AUC</li>
+                            <li>Visualization of fraud patterns and model performance</li>
+                            <li>Real-world fraud detection workflow and risk analysis</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/moedk2204/ML_creditcard_" target="_blank">
+                            code <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
 
+                <!-- Project 3: Titanic ML Project -->
+                <div class="project-detail-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Titanic ML Project</h3>
+
+                    </div>
+                    <div class="project-description">
+                        A classic supervised machine learning project predicting passenger survival on the Titanic using
+                        structured data analysis and multiple classification models.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Matplotlib</span>
+                        <span class="tech-tag">Seaborn</span>
+                    </div>
+                    <button class="toggle-features-btn" onclick="toggleFeatures(this)">
+                        <span>Show Key Features</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="features-container">
+                        <h4 class="key-features-title">Key Features</h4>
+                        <ul class="features-list">
+                            <li>Data cleaning, feature engineering, and exploratory data analysis</li>
+                            <li>Implementation of multiple ML classification models</li>
+                            <li>Model comparison and performance evaluation</li>
+                            <li>Handling missing values and categorical data</li>
+                            <li>Hyperparameter tuning for improved accuracy</li>
+                            <li>End-to-end ML pipeline from raw data to prediction</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/moedk2204/ML_Titanic" target="_blank">
+                            <span>code</span> <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="agents" class="container animate-on-scroll">
+            <h2 class="section-title">AI Agent Projects</h2>
+            <div class="projects">
+                <!-- Medical Assistant - LangGraph Multi-Agent RAG -->
+                <div class="project-detail-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">Medical Assistant — Multi-Agent Clinical RAG</h3>
+                            <div class="project-meta">LangGraph <span class="dot">•</span> Multi-Modal RAG</div>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        A safety-first medical question-answering agent built as a LangGraph state machine. An intake
+                        agent classifies clinical intent, a tiered retrieval agent searches authority-weighted Pinecone
+                        namespaces (clinical guidelines, drug monographs, StatPearls), and a compliance agent rewrites
+                        any answer that drifts into diagnosis or prescription language.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">LangGraph</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Pinecone</span>
+                        <span class="tech-tag">Gemini Vision</span>
+                        <span class="tech-tag">Ollama (Local LLM)</span>
+                        <span class="tech-tag">Sentence-Transformers</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Supabase</span>
+                        <span class="tech-tag">Gradio</span>
+                    </div>
+                    <button class="toggle-features-btn" onclick="toggleFeatures(this)">
+                        <span>Show Key Features</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="features-container">
+                        <h4 class="key-features-title">Key Features</h4>
+                        <ul class="features-list">
+                            <li>Three-node LangGraph pipeline (Intake → RAG → Safety) with conditional routing that
+                                short-circuits greetings, small talk, and out-of-scope questions before retrieval</li>
+                            <li>Structured intent classification via a local LLM with Pydantic-parsed output and a
+                                keyword-based re-routing fallback when the classifier misfires</li>
+                            <li>Deterministic namespace router mapping each question category to a primary vector
+                                namespace plus ordered fallbacks, with guideline-keyword overrides</li>
+                            <li>Tiered fallback retriever that escalates across namespaces until average similarity
+                                clears the threshold — an explicit anti-hallucination layer</li>
+                            <li>Authority-weighted confidence scoring blending retrieval similarity with source
+                                trust (guidelines &gt; drug monographs &gt; StatPearls)</li>
+                            <li>Multi-modal ingestion using PyMuPDF4LLM + Gemini Vision to transcribe medical charts
+                                and figures into retrievable text, with a persistent transcription cache and rate-limit
+                                retry logic</li>
+                            <li>Regex-based safety agent detecting and rewriting prescriptive language into
+                                guideline-attributed phrasing</li>
+                            <li>Observability layer logging every query, namespace, similarity, and confidence to
+                                Supabase plus local JSONL backups</li>
+                            <li>Served through both a FastAPI REST API and a Gradio UI exposing live pipeline
+                                telemetry (classification, namespace, confidence, sources)</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/moedk2204/medical_Assistant" target="_blank">
+                            code <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- RAG PDF Chat -->
+                <div class="project-detail-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">RAG Chatbot (Claude API + LangChain + Gradio)</h3>
+                            <div class="project-meta">Retrieval-Augmented Generation <span class="dot">•</span>
+                                Dockerized</div>
+                        </div>
                     </div>
                     <div class="project-description">
                         A Retrieval-Augmented Generation (RAG) chatbot that enables interactive question-answering over
@@ -1157,91 +1644,9 @@
                         </a>
                     </div>
                 </div>
-
-                <!-- Project 3: Credit Card Fraud Detection -->
-                <div class="project-detail-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Credit Card Fraud Detection</h3>
-                    </div>
-                    <div class="project-description">
-                        A machine learning project focused on detecting fraudulent credit card transactions using
-                        anomaly detection and classification techniques to handle highly imbalanced financial datasets.
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Scikit-learn</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">NumPy</span>
-                        <span class="tech-tag">Matplotlib</span>
-                        <span class="tech-tag">Seaborn</span>
-                    </div>
-                    <button class="toggle-features-btn" onclick="toggleFeatures(this)">
-                        <span>Show Key Features</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="features-container">
-                        <h4 class="key-features-title">Key Features</h4>
-                        <ul class="features-list">
-                            <li>Fraud detection on highly imbalanced transaction data</li>
-                            <li>Feature scaling and preprocessing for financial datasets</li>
-                            <li>Anomaly detection and supervised ML models</li>
-                            <li>Evaluation using precision, recall, F1-score, and ROC-AUC</li>
-                            <li>Visualization of fraud patterns and model performance</li>
-                            <li>Real-world fraud detection workflow and risk analysis</li>
-                        </ul>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/moedk2204/ML_creditcard_" target="_blank">
-                            code <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 4: Titanic ML Project -->
-                <div class="project-detail-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Titanic ML Project</h3>
-
-                    </div>
-                    <div class="project-description">
-                        A classic supervised machine learning project predicting passenger survival on the Titanic using
-                        structured data analysis and multiple classification models.
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Scikit-learn</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">NumPy</span>
-                        <span class="tech-tag">Matplotlib</span>
-                        <span class="tech-tag">Seaborn</span>
-                    </div>
-                    <button class="toggle-features-btn" onclick="toggleFeatures(this)">
-                        <span>Show Key Features</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="features-container">
-                        <h4 class="key-features-title">Key Features</h4>
-                        <ul class="features-list">
-                            <li>Data cleaning, feature engineering, and exploratory data analysis</li>
-                            <li>Implementation of multiple ML classification models</li>
-                            <li>Model comparison and performance evaluation</li>
-                            <li>Handling missing values and categorical data</li>
-                            <li>Hyperparameter tuning for improved accuracy</li>
-                            <li>End-to-end ML pipeline from raw data to prediction</li>
-                        </ul>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/moedk2204/ML_Titanic" target="_blank">
-                            <span>code</span> <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
             </div>
-        </section>
 
-        <section class="container animate-on-scroll">
-            <h2 class="section-title">AI Agent Projects</h2>
-            <div class="projects">
+            <div class="projects" style="margin-top: 2rem;">
                 <div class="project-card">
                     <i class="fas fa-calendar-check"></i>
                     <h3>Google Calendar AI Agent</h3>
@@ -1285,28 +1690,6 @@
                             demo <i class="fas fa-external-link-alt"></i>
                         </a>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="container animate-on-scroll">
-            <h2 class="section-title">CrewAI Multi-Agent Systems</h2>
-            <div class="projects">
-                <div class="project-card">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                    <h3>Teacher Assistant</h3>
-                    <p>
-                        Assistant-driven classroom toolkit including lesson plans,
-                        quizzes, and Python utilities to support instructors.
-                    </p>
-                </div>
-                <div class="project-card">
-                    <i class="fas fa-pen-nib"></i>
-                    <h3>Content Creator Assistant</h3>
-                    <p>
-                        CrewAI-powered multi-agent system for generating blog drafts,
-                        reports, and SEO-optimized content.
-                    </p>
                 </div>
             </div>
         </section>
@@ -1595,6 +1978,66 @@
                 icon.className = 'fas fa-chevron-down';
             }
         }
+
+        // --- Lead By Tech Case Study Slider ---
+        (function initSlider() {
+            const track = document.getElementById('lbt-track');
+            const prevBtn = document.getElementById('lbt-prev');
+            const nextBtn = document.getElementById('lbt-next');
+            const dotsWrap = document.getElementById('lbt-dots');
+            if (!track) return;
+
+            const slides = Array.from(track.querySelectorAll('.slide'));
+            let current = 0;
+
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', `Go to case study ${i + 1}`);
+                dot.addEventListener('click', () => goTo(i));
+                dotsWrap.appendChild(dot);
+            });
+
+            const dots = Array.from(dotsWrap.children);
+
+            function goTo(index) {
+                current = Math.max(0, Math.min(slides.length - 1, index));
+                track.scrollTo({ left: slides[current].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+                sync();
+            }
+
+            function sync() {
+                dots.forEach((d, i) => d.classList.toggle('active', i === current));
+                prevBtn.disabled = current === 0;
+                nextBtn.disabled = current === slides.length - 1;
+            }
+
+            prevBtn.addEventListener('click', () => goTo(current - 1));
+            nextBtn.addEventListener('click', () => goTo(current + 1));
+
+            // Keep dots in sync when the user swipes/scrolls the track directly
+            let scrollTimer;
+            track.addEventListener('scroll', () => {
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(() => {
+                    const center = track.scrollLeft + track.clientWidth / 2;
+                    let closest = 0;
+                    let minDist = Infinity;
+                    slides.forEach((slide, i) => {
+                        const slideCenter = slide.offsetLeft - track.offsetLeft + slide.offsetWidth / 2;
+                        const dist = Math.abs(slideCenter - center);
+                        if (dist < minDist) {
+                            minDist = dist;
+                            closest = i;
+                        }
+                    });
+                    current = closest;
+                    sync();
+                }, 100);
+            });
+
+            sync();
+        })();
 
         const aboutSection = document.querySelector('#about');
         const aboutObserver = new IntersectionObserver(function (entries) {
